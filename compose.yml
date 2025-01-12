@@ -1,0 +1,11 @@
+services:
+  app:
+    image: node:alpine
+    container_name: node
+    working_dir: /usr/src/app
+    volumes:
+    - type: bind
+      source: ./app
+      target: /usr/src/app
+    tty: true
+
