@@ -3,6 +3,8 @@ services:
     image: node:alpine
     container_name: node
     working_dir: /usr/src/app
+    ports:
+    - 3000:3000
     volumes:
     - type: bind
       source: ./app
