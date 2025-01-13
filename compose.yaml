@@ -2,6 +2,7 @@ services:
   app:
     image: node:alpine
     container_name: node
+    command: node app.js
     working_dir: /usr/src/app
     ports:
     - 3000:3000
