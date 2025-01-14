@@ -6,18 +6,18 @@ services:
     working_dir: /usr/src/app
     ports:
     - 3000:3000
-#    - 5173:5173
+    - 5173:5173
     volumes:
     - type: bind
       source: ./app
       target: /usr/src/app
     tty: true
-  vite:
-    image: node:alpine
-    container_name: vite
-    working_dir: /usr/src/app
-    ports:
-    - 5173:5173
-    volumes:
-    - ./vite:/usr/src/app
-    tty: true
+#  vite:
+#    image: node:alpine
+#    container_name: vite
+#    working_dir: /usr/src/app
+#    ports:
+#    - 5173:5173
+#    volumes:
+#    - ./vite:/usr/src/app
+#    tty: true
