@@ -1,4 +1,4 @@
 #!/usr/bin/bash
 
-docker run --rm -it express express $@
+docker run -v .:/tmp/express --rm -it express express $@
 
