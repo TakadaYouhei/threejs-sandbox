@@ -1,4 +1,4 @@
-FROM node
+FROM node:23.6.0-slim
 
 RUN npm install -g express-generator
 
