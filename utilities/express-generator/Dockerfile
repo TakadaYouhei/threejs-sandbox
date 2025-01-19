@@ -1,9 +1,9 @@
 # syntax=docker/dockerfile:1.3-labs
 FROM node:23.6.0-slim
 
-RUN npm install -g express-generator \
-    && apt-get update \
-    && apt-get install -y gosu
+RUN npm install -g express-generator
+RUN apt-get update
+RUN apt-get install -y gosu
 
 # 新しい entrypoint を設定
 RUN <<eot
