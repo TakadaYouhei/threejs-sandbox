@@ -14,4 +14,7 @@ npm create vite@latest app3 -- --template vue
 # npm install の実行
 cd app3
 npm install
+
+# 動作確認 (vite を実行)
+npm run dev
 ```
