@@ -3,3 +3,5 @@
 # 履歴
 
 express --viw=pug app2
+cd app2
+npm install
