@@ -11,4 +11,7 @@ Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://
 # 新規作成
 npm create vite@latest app3 -- --template vue
 
+# npm install の実行
+cd app3
+npm install
 ```
