@@ -25,6 +25,12 @@ jobs:
       - store_artifacts:
           path: ~/artifacts
           destination: node-build
+      - run:
+          name: check current
+          command:
+            - ls -al
+            - pwd
+
   deploy:
     # This is an example deploy job, not actually used by the workflow
     docker:
