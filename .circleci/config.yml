@@ -27,9 +27,9 @@ jobs:
           destination: node-build
       - run:
           name: check current
-          command:
-            - ls -al
-            - pwd
+          command: ls -al
+      - run:
+          command: pwd
 
   deploy:
     # This is an example deploy job, not actually used by the workflow
