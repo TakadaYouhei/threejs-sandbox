@@ -26,10 +26,8 @@ jobs:
           path: ~/artifacts
           destination: node-build
       - run:
-          name: check current
-          command: ls -al
-      - run:
-          command: pwd
+          name: commit build result
+          command: bash for_cicl/commit_build_results.sh
 
   deploy:
     # This is an example deploy job, not actually used by the workflow
