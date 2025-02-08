@@ -26,8 +26,6 @@ jobs:
           path: ~/artifacts
           destination: node-build
       - run:
-          command: ls -al
-      - run:
           name: commit build result
           command: bash for_cicl/commit_build_results.sh
 
