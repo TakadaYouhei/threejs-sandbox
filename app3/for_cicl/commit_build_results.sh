@@ -2,7 +2,7 @@
 
 # The authenticity of host 'github.com (x.x.x.x)' can't be established.
 # auto yes
-echo yes | git clone git@github.com:TakadaYouhei/threejs-sandbox-output.git output_git
+GIT_SSH_COMMAND="ssh -o BatchMode=yes" git clone git@github.com:TakadaYouhei/threejs-sandbox-output.git output_git
 cp -r ~/artifacts/* output_git/
 pushd output_git
 git add *
