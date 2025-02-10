@@ -9,7 +9,7 @@ jobs:
     executor: node/default
     working_directory: ~/project/app3
     steps:
-      - add_ssh_key:
+      - add_ssh_keys:
           fingerprints:
             - "SHA256:hAsn63HsnFVz9ucfeZxvTOg4SEJHLRKtj5SrFcZR6MQ"
       - checkout:
