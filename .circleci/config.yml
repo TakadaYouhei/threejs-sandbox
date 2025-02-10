@@ -9,6 +9,9 @@ jobs:
     executor: node/default
     working_directory: ~/project/app3
     steps:
+      - add_ssh_key:
+          fingerprints:
+            - "SHA256:hAsn63HsnFVz9ucfeZxvTOg4SEJHLRKtj5SrFcZR6MQ"
       - checkout:
           path: ~/project
       - node/install-packages:
