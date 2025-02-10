@@ -6,6 +6,10 @@ cat ~/.ssh/known_hosts
 GIT_SSH_COMMAND="ssh -o BatchMode=yes" git clone git@github.com:TakadaYouhei/threejs-sandbox-output.git output_git
 cp -r ~/artifacts/* output_git/
 pushd output_git
+
+git config user.email "TakadaYouhei@users.noreply.github.com"
+git config user.name "Takada Youhei"
+
 git add *
 git commit -m "Add build results"
 git push origin main
