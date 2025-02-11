@@ -1,6 +1,7 @@
 # syntax=docker/dockerfile:1.3-labs
 FROM node:23.7.0-slim
 
+RUN npm install -g npm@11.1.0
 RUN npm install -g express-generator
 RUN apt-get update
 RUN apt-get install -y gosu
