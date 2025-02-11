@@ -1,5 +1,5 @@
 # This config was automatically generated from your source code
-# Stacks detected: deps:node:app3
+# Stacks detected: deps:node:app4
 version: 2.1
 orbs:
   node: circleci/node@5
@@ -7,7 +7,7 @@ jobs:
   build-node:
     # Build node project
     executor: node/default
-    working_directory: ~/project/app3
+    working_directory: ~/project/app4
     steps:
       - checkout:
           path: ~/project
