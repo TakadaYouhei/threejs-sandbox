@@ -16,7 +16,21 @@ const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 const cube = new THREE.Mesh( geometry, material );
 scene.add( cube );
 
+addLine(scene);
+
 camera.position.z = 5;
+
+// シーンにラインを追加
+function addLine(scene: THREE.Scene) {
+	const material = new THREE.LineBasicMaterial( { color: 0x0000ff } );
+	const points = [];
+	points.push( new THREE.Vector3( -1, 0, 0 ) );
+	points.push( new THREE.Vector3( 0, 1, 0 ) );
+	points.push( new THREE.Vector3( 1, 0, 0 ) );
+	const geometry = new THREE.BufferGeometry().setFromPoints( points );
+	const line = new THREE.Line( geometry, material );
+	scene.add( line );
+}
 
 function checkWebGL2() {
 	let msg;
