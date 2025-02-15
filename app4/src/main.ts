@@ -28,10 +28,7 @@ function checkWebGL2() {
 		msg = WebGL.getWebGL2ErrorMessage();
 		console.info('WebGL is not available');
 	}
-	const container = document.getElementById( 'container' );
-	if (container) {
-		container.appendChild(msg);
-	}
+	document.getElementById( 'container' )!.appendChild(msg);
 }
 
 function animate() {
