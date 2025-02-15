@@ -19,15 +19,19 @@ scene.add( cube );
 camera.position.z = 5;
 
 function checkWebGL2() {
+	let msg;
 	if (WebGL.isWebGL2Available()) {
-		console.log('WebGL is available');
+		msg = document.createElement('div');
+		msg.textContent = 'WebGL is available';
+		console.info('WebGL is available');
 	} else {
-		const warning = WebGL.getWebGL2ErrorMessage();
-		const container = document.getElementById( 'container' );
-		if (container) {
-			container.appendChild(warning);
-		}
-x	}
+		msg = WebGL.getWebGL2ErrorMessage();
+		console.info('WebGL is not available');
+	}
+	const container = document.getElementById( 'container' );
+	if (container) {
+		container.appendChild(msg);
+	}
 }
 
 function animate() {
