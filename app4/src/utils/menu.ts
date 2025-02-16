@@ -63,7 +63,7 @@ class Menu {
 
             // メニュー選択時の処理を登録
             if (i === menu.length - 1) {
-                menuItem.onclick = func;
+                menuItem.onclick = () => { func() }
             }
 
             // 親要素を更新
