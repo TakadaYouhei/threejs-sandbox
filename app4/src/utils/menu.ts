@@ -38,7 +38,7 @@ class Menu {
      * 
      * name の内容を "menu/submenu" のように / で区切ることでサブメニューを追加できる
      */
-    add(name: string, func: Function) : void {
+    add(name: string, func: (this: GlobalEventHandlers, ev: MouseEvent) => any) : void {
         console.log('Menu add');
 
         // id : menu_root の要素を取得
@@ -63,7 +63,7 @@ class Menu {
 
             // メニュー選択時の処理を登録
             if (i === menu.length - 1) {
-                menuItem.onclick = () => { func() }
+                menuItem.onclick = func
             }
 
             // 親要素を更新
