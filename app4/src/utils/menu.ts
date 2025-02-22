@@ -57,6 +57,8 @@ class Menu {
             if (!menuItem) {
                 menuItem = document.createElement('div')!;
                 menuItem.id = 'menu_' + menu[i];
+                // クラス名は menu_depth + 深さ
+                menuItem.className = 'menu_depth' + i;
                 menuItem.textContent = menu[i];
                 parent.appendChild(menuItem);
             }
