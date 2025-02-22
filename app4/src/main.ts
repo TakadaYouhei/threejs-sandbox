@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import WebGL from 'three/addons/capabilities/WebGL.js';
 import { Menu } from './utils/menu.ts';
 
+createMenu();
 checkWebGL2();
 
 const scene = new THREE.Scene();
@@ -18,7 +19,6 @@ const cube = new THREE.Mesh( geometry, material );
 scene.add( cube );
 
 addLine(scene);
-createMenu();
 
 camera.position.z = 5;
 
