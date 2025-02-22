@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import WebGL from 'three/addons/capabilities/WebGL.js';
+import { Menu } from './utils/menu.ts';
 
 checkWebGL2();
 
@@ -17,8 +18,20 @@ const cube = new THREE.Mesh( geometry, material );
 scene.add( cube );
 
 addLine(scene);
+createMenu();
 
 camera.position.z = 5;
+
+// メニューを構築
+function createMenu() {
+	const menu = new Menu();
+	menu.init();
+	menu.add('File/New', () => { console.log('File/New'); });
+	menu.add('File/Open', () => { console.log('File/Open'); });
+	menu.add('File/Save', () => { console.log('File/Save'); });
+	menu.add('Edit/Copy', () => { console.log('Edit/Copy'); });
+	menu.add('Edit/Paste', () => { console.log('Edit/Paste'); });
+}
 
 // シーンにラインを追加
 function addLine(scene: THREE.Scene) {
