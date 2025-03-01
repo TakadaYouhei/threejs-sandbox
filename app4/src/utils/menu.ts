@@ -55,6 +55,19 @@ class Menu {
 
             // id : menu の要素が存在しない場合 div 要素を追加
             if (!menuItem) {
+                // i = 1 は最初の次の要素
+                // コンテンツの上にプルダウンメニューがのっかるようにダミー要素を追加
+                if (i === 1) {
+                    let dummy = document.getElementById(parent.id + '_dummy');
+                    if (!dummy) {
+                        dummy = document.createElement('div')!;
+                        dummy.className = 'menu_dummy';
+                        dummy.id = parent.id + '_dummy';
+                    }
+                    parent.appendChild(dummy);
+                    parent = dummy;
+                }
+
                 menuItem = document.createElement('div')!;
                 menuItem.id = 'menu_' + menu[i];
                 // クラス名は menu_depth + 深さ
