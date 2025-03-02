@@ -29,7 +29,6 @@ class Menu {
             menuRoot.id = 'menu_root';
 
             const contents = document.getElementById('contents')!;
-            contents.ontouchstart = (event) => { event.preventDefault(); }
             contents.appendChild(menuRoot);
         }
     }
