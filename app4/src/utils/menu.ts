@@ -27,6 +27,7 @@ class Menu {
         if (!menuRoot) {
             menuRoot = document.createElement('div');
             menuRoot.id = 'menu_root';
+            menuRoot.ontouchstart = null;
             document.body.appendChild(menuRoot);
         }
     }
