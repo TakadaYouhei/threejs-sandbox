@@ -2,7 +2,9 @@ import * as THREE from 'three';
 import WebGL from 'three/addons/capabilities/WebGL.js';
 import { Menu } from './utils/menu.ts';
 
-setup_ontouchstart();
+const contents = document.getElementById('contents')!;
+
+setup_ontouchstart(contents);
 createMenu();
 checkWebGL2();
 
@@ -27,8 +29,8 @@ camera.position.z = 5;
  * ipad でいい感じにタッチイベントを処理するためのおまじない
  * これをしないと menu の hover の処理が適切に実行されない
  */
-function setup_ontouchstart() {
-	const contents = document.getElementById('contents')!;
+function setup_ontouchstart(contents: HTMLElement) {
+	
 	contents.ontouchstart = (event) => { event.preventDefault(); }
 }
 
