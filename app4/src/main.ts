@@ -1,6 +1,9 @@
 import * as THREE from 'three';
 import WebGL from 'three/addons/capabilities/WebGL.js';
 import { Menu } from './utils/menu.ts';
+import { SceneManager } from './sys/scene_manager.ts'
+
+const smng = new SceneManager()
 
 const contents = document.getElementById('contents')!;
 
