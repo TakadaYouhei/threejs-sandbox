@@ -1,12 +1,13 @@
 import { IScene } from './iscene.ts'
 class SceneManager {
   // 現在表示しているシーン
-  current: IScene;
+  current: IScene | null;
   // 次に表示するシーン
-  next: IScene;
+  next: IScene | null;
   
   constructor(){
-    
+    this.current = null
+    this.next = null
   }
   
   /**

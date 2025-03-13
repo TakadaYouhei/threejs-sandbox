@@ -4,6 +4,7 @@ import { Menu } from './utils/menu.ts';
 import { SceneManager } from './sys/scene_manager.ts'
 
 const smng = new SceneManager()
+smng.request("test")
 
 const contents = document.getElementById('contents')!;
 

@@ -6,4 +6,4 @@ interface IScene{
   on_load(): Promise<void>;
 }
 
-export { IScene }
+//export { IScene }
