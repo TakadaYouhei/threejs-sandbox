@@ -19,3 +19,5 @@ class SceneManager {
     console.info(name)
   }
 }
+
+export { SceneManager }
