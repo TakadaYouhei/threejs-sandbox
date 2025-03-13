@@ -1,9 +1,9 @@
-import { Iscene } from './iscene.ts'
+import { IScene } from './iscene.ts'
 class SceneManager {
   // 現在表示しているシーン
   current: IScene;
   // 次に表示するシーン
-  next: Iscene;
+  next: IScene;
   
   constructor(){
     
