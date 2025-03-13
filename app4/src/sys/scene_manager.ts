@@ -16,6 +16,6 @@ class SceneManager {
    * name クラスのインスタンスを作成して切り替える
    */
   request(name: string):void {
-    
+    console.info(name)
   }
 }
