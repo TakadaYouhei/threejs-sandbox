@@ -3,7 +3,7 @@
  */
 interface IScene{
   // シーン表示に必要な読み込みを行う
-  on_load(): Promise<void>;
+  on_load(): Promise<void>
 }
 
-//export { IScene }
+export { IScene }
