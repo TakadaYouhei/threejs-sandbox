@@ -13,7 +13,6 @@ const contents = document.getElementById('contents')!;
 
 setup_ontouchstart(contents);
 createMenu();
-checkWebGL2();
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
