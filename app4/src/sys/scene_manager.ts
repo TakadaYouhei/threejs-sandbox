@@ -12,12 +12,30 @@ class SceneManager {
   
   /**
    * シーンの切り替え
-   * @param string name シーンクラス名
+   * @param scene シーンクラス
    *
-   * name クラスのインスタンスを作成して切り替える
+   * scene クラスのインスタンスを作成して切り替える
    */
-  request(name: string):void {
-    console.info(name)
+  request<T  extends IScene>(scene: new () => T ):void {
+    const next = new scene()
+    this.next = next
+  }
+
+  /**
+   * シーンの更新
+   */
+  update(dt: number):void {
+    if(this.next !== null){
+      if(this.current !== null){
+        //this.current.destroy()
+      }
+      this.current = this.next
+      this.next = null
+      this.current.init()
+    }
+    if(this.current !== null){
+      this.current.animate(dt)
+    }
   }
 }
 
