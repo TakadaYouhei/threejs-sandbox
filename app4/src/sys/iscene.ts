@@ -1,3 +1,5 @@
+import * as THREE from 'three';
+
 /**
  * SceneManager で管理されるシーン情報
  *
@@ -27,7 +29,7 @@ interface IScene{
    * 
    * @returns Promise<void> - シーン表示が正常に完了したときに解決されるPromise
    */
-  enterScene(): Promise<void>
+  enterScene(scene: THREE.Scene, camera: THREE.Camera): Promise<void>
   
   /**
    * アニメーション処理
