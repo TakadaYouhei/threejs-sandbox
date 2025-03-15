@@ -32,9 +32,9 @@ interface IScene{
   /**
    * アニメーション処理
    * 
-   * @param float dt 前回呼び出してからの経過時間[秒]
+   * @param number dt 前回呼び出してからの経過時間[秒]
    */
-  animate(dt: float): void
+  animate(dt: number): void
   
   /**
    * シーン表示終了時に呼ばれる。
