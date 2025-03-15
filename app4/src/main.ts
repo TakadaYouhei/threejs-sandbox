@@ -3,8 +3,10 @@ import WebGL from 'three/addons/capabilities/WebGL.js';
 import { Menu } from './utils/menu.ts';
 import { SceneManager } from './sys/scene_manager.ts'
 
-const smng = new SceneManager()
-smng.request("test")
+import { TriangleScene } from './scenes/triangle_scene.ts';
+
+const sm = new SceneManager()
+sm.request(TriangleScene)
 
 const contents = document.getElementById('contents')!;
 
