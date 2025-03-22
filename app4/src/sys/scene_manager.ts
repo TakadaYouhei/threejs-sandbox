@@ -44,7 +44,6 @@ class SceneManager {
 
     next.init()
     await next.loadAsync()
-    await next.enterScene(this.scene, this.camera)
 
     return Promise.resolve()
   }
@@ -55,11 +54,12 @@ class SceneManager {
   update(dt: number):void {
     if(this.next !== null){
       if(this.current !== null){
-        //this.current.destroy()
+        // todo : exitScene の Promise を待つ
+        this.current.exitScene(this.scene)
       }
       this.current = this.next
       this.next = null
-      this.current.init()
+      this.current.enterScene(this.scene, this.camera)
     }
     if(this.current !== null){
       this.current.animate(dt)
