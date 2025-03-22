@@ -3,6 +3,8 @@ import { Menu } from './utils/menu.ts';
 import { SceneManager } from './sys/scene_manager.ts'
 
 import { TriangleScene } from './scenes/triangle_scene.ts';
+import { BoxScene } from './scenes/box_scene.ts';
+import { BothScene } from './scenes/both_scene copy.ts';
 
 const clock = new THREE.Clock()
 const sm = new SceneManager()
@@ -36,6 +38,10 @@ function createMenu() {
 	menu.add('File/Save', () => { console.log('File/Save'); });
 	menu.add('Edit/Copy', () => { console.log('Edit/Copy'); });
 	menu.add('Edit/Paste', () => { console.log('Edit/Paste'); });
+
+	menu.add('Scene/Triangle', () => { sm.request(TriangleScene); });
+	menu.add('Scene/Box', () => { sm.request(BoxScene); });
+	menu.add('Scene/Both', () => { sm.request(BothScene); });
 }
 
 function animate() {
