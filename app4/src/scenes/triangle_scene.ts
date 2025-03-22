@@ -27,7 +27,7 @@ class TriangleScene implements IScene {
     return Promise.resolve();
   }
   
-  animate(dt: number): void {
+  animate(_dt: number): void {
   }
   
   async exitScene(): Promise<void> {
