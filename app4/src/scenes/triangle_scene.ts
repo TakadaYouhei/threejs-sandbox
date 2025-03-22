@@ -30,7 +30,9 @@ class TriangleScene implements IScene {
   }
   
   animate(_dt: number): void {
-    this.points[0].x = Math.sin( Date.now() * 0.001 ) * 2;
+    const positionAttribute = this.line.geometry.attributes.position;
+    positionAttribute.setX(0, Math.sin( Date.now() * 0.001 ) * 2);
+    positionAttribute.needsUpdate = true;
     //console.log(this.points[0].x)
   }
   
