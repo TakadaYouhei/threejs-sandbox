@@ -41,7 +41,7 @@ interface IScene{
   /**
    * シーン表示終了時に呼ばれる。
    */
-  exitScene(): Promise<void>
+  exitScene(scene: THREE.Scene): Promise<void>
 }
 
 export type { IScene }

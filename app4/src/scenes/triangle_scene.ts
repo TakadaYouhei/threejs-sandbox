@@ -30,7 +30,8 @@ class TriangleScene implements IScene {
   animate(_dt: number): void {
   }
   
-  async exitScene(): Promise<void> {
+  async exitScene(scene: THREE.Scene): Promise<void> {
+    scene.remove( this.line );
     return Promise.resolve();
   }
 }

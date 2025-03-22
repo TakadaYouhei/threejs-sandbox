@@ -38,7 +38,9 @@ class BothScene implements IScene {
     this.cube.rotation.y += 0.1 * dt;
   }
   
-  async exitScene(): Promise<void> {
+  async exitScene(scene: THREE.Scene): Promise<void> {
+    scene.remove( this.cube );
+    scene.remove( this.line );
     return Promise.resolve();
   }
 }
