@@ -1,4 +1,6 @@
 import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
 import { Menu } from './utils/menu.ts';
 import { SceneManager } from './sys/scene_manager.ts'
 
@@ -19,6 +21,9 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.setAnimationLoop( animate );
 contents.appendChild( renderer.domElement );
+
+const orbit = new OrbitControls( sm.getCamera(), renderer.domElement );
+orbit.update();
 
 /**
  * ipad でいい感じにタッチイベントを処理するためのおまじない
@@ -47,5 +52,6 @@ function createMenu() {
 function animate() {
 	const dt = clock.getDelta()
 	sm.update(dt)
+	orbit.update()
 	renderer.render( sm.getScene(), sm.getCamera() );
 }
