@@ -32,6 +32,10 @@ const divisions = 10;
 const gridHelper = new THREE.GridHelper( size, divisions );
 sm.getScene().add( gridHelper );
 
+// 座標軸を表示
+const axesHelper = new THREE.AxesHelper( 5 );
+sm.getScene().add( axesHelper );
+
 /**
  * ipad でいい感じにタッチイベントを処理するためのおまじない
  * これをしないと menu の hover の処理が適切に実行されない
