@@ -39,6 +39,9 @@ sm.getScene().add( axesHelper );
 // リサイズ処理
 window.addEventListener( 'resize', onWindowResize );
 
+// クリック処理
+document.addEventListener('click', onClick );
+
 /**
  * ipad でいい感じにタッチイベントを処理するためのおまじない
  * これをしないと menu の hover の処理が適切に実行されない
@@ -74,4 +77,24 @@ function animate() {
 function onWindowResize() {
 	sm.onWindowResize()
 	renderer.setSize( window.innerWidth, window.innerHeight );
+}
+
+// クリック時の処理
+function onClick(event: MouseEvent) : void {
+	// クリックした位置の座標を取得する
+	const x = event.x;
+	const y = event.y;
+	console.log(`click at ( ${x}, ${y} )`)
+
+	// raycast を飛ばしてクリックしたオブジェクトを取得する
+	const raycaster = new THREE.Raycaster();
+	
+	raycaster.setFromCamera( new THREE.Vector2(x,y), sm.getCamera() );
+	const intersects = raycaster.intersectObjects(sm.getScene().children,false);
+	console.log(intersects)
+	if(intersects.length == 0){
+		return
+	}
+	const obj = intersects[0].object;
+	console.log(obj);
 }
