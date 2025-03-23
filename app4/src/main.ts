@@ -82,8 +82,8 @@ function onWindowResize() {
 // クリック時の処理
 function onClick(event: MouseEvent) : void {
 	// クリックした位置の座標を取得する
-	const x = event.x;
-	const y = event.y;
+	const x = ( event.clientX / window.innerWidth ) * 2 - 1
+	const y = - ( event.clientY / window.innerHeight ) * 2 + 1
 	console.log(`click at ( ${x}, ${y} )`)
 
 	// raycast を飛ばしてクリックしたオブジェクトを取得する
