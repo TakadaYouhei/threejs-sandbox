@@ -72,7 +72,6 @@ function animate() {
 
 // リサイズ時の処理
 function onWindowResize() {
-	sm.getCamera().aspect = window.innerWidth / window.innerHeight;
-	sm.getCamera().updateProjectionMatrix();
+	sm.onWindowResize()
 	renderer.setSize( window.innerWidth, window.innerHeight );
 }

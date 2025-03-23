@@ -65,6 +65,14 @@ class SceneManager {
       this.current.animate(dt)
     }
   }
+
+  /**
+   * リサイズ処理
+   */
+  onWindowResize():void {
+    this.camera.aspect = window.innerWidth / window.innerHeight;
+    this.camera.updateProjectionMatrix();
+  }
 }
 
 export { SceneManager }
