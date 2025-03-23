@@ -36,6 +36,9 @@ sm.getScene().add( gridHelper );
 const axesHelper = new THREE.AxesHelper( 5 );
 sm.getScene().add( axesHelper );
 
+// リサイズ処理
+window.addEventListener( 'resize', onWindowResize );
+
 /**
  * ipad でいい感じにタッチイベントを処理するためのおまじない
  * これをしないと menu の hover の処理が適切に実行されない
@@ -65,4 +68,11 @@ function animate() {
 	sm.update(dt)
 	orbit.update()
 	renderer.render( sm.getScene(), sm.getCamera() );
+}
+
+// リサイズ時の処理
+function onWindowResize() {
+	sm.getCamera().aspect = window.innerWidth / window.innerHeight;
+	sm.getCamera().updateProjectionMatrix();
+	renderer.setSize( window.innerWidth, window.innerHeight );
 }
