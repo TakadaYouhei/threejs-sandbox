@@ -79,37 +79,54 @@ function onWindowResize() {
 	renderer.setSize( window.innerWidth, window.innerHeight );
 }
 
-// クリック時の処理
-function onClick(event: MouseEvent) : void {
-	// クリックした位置の座標を取得する
+// クリックした位置から Raycaster に渡す Vector2 を計算する関数
+function getClickPosition(event: MouseEvent) : THREE.Vector2 {
 	const element = event.target as HTMLElement
 	if (!element) {
 		console.error(`element is not HTMLElement ${element}`)
-		return
+		return new THREE.Vector2(0, 0)
 	}
 	const x = ( (event.clientX - element.offsetLeft) / element.offsetWidth ) * 2 - 1
 	const y = - ( (event.clientY - element.offsetTop) / element.offsetHeight ) * 2 + 1
-	//console.log(`click at ( ${x}, ${y} ) element ${element.offsetLeft}, ${element.offsetTop} ${Object.keys(element)}`)
-	//console.log(event.target)
-	//console.log(event)
+	return new THREE.Vector2(x, y)
+}
+
+/**
+ *  raycaster の intersectObjects から SphereMesh を取得するための関数
+ * 
+ * intersects は Raycaster の intersectObjects から取得した配列
+ */
+function getIntersectSphereMesh<TIntersected extends THREE.Object3D>(
+		intersects: Array<THREE.Intersection<TIntersected>>
+		) : THREE.Mesh | null {
+	for (const intersect of intersects) {
+		const obj = intersect.object;
+		if (obj instanceof THREE.Mesh) {
+			if (obj.geometry instanceof THREE.SphereGeometry) {
+				//console.log(`Mesh ${obj.name} clicked`);
+				return obj
+			}
+		}
+	}
+	return null
+}
+
+// クリック時の処理
+function onClick(event: MouseEvent) : void {
+	// クリックした位置の座標を取得する
+	const click_pos = getClickPosition(event)
 
 	// raycast を飛ばしてクリックしたオブジェクトを取得する
 	const raycaster = new THREE.Raycaster();
 	
-	raycaster.setFromCamera( new THREE.Vector2(x,y), sm.getCamera() );
+	raycaster.setFromCamera( click_pos, sm.getCamera() );
 	const intersects = raycaster.intersectObjects(sm.getScene().children,false);
-	//console.log(intersects)
-	if(intersects.length == 0){
+
+	// 取得したオブジェクトの中から マニピュレーター (SphereMesh) を取得する
+	const mesh = getIntersectSphereMesh(intersects)
+	if(mesh == null){
+		console.log("Mesh is null")
 		return
 	}
-	//const obj = intersects[0].object;
-	//console.log(obj);
-
-	// intersects の中をすべて調べて Mesh が含まれていたら Log に出力
-	for (const intersect of intersects) {
-		const obj = intersect.object;
-		if (obj instanceof THREE.Mesh) {
-			console.log(`Mesh ${obj.name} clicked`);
-		}
-	}
+	console.log(`Mesh ${mesh.name} clicked`);
 }
