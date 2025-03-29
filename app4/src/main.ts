@@ -89,19 +89,27 @@ function onClick(event: MouseEvent) : void {
 	}
 	const x = ( (event.clientX - element.offsetLeft) / element.offsetWidth ) * 2 - 1
 	const y = - ( (event.clientY - element.offsetTop) / element.offsetHeight ) * 2 + 1
-	console.log(`click at ( ${x}, ${y} ) element ${element.offsetLeft}, ${element.offsetTop} ${Object.keys(element)}`)
-	console.log(event.target)
-	console.log(event)
+	//console.log(`click at ( ${x}, ${y} ) element ${element.offsetLeft}, ${element.offsetTop} ${Object.keys(element)}`)
+	//console.log(event.target)
+	//console.log(event)
 
 	// raycast を飛ばしてクリックしたオブジェクトを取得する
 	const raycaster = new THREE.Raycaster();
 	
 	raycaster.setFromCamera( new THREE.Vector2(x,y), sm.getCamera() );
 	const intersects = raycaster.intersectObjects(sm.getScene().children,false);
-	console.log(intersects)
+	//console.log(intersects)
 	if(intersects.length == 0){
 		return
 	}
-	const obj = intersects[0].object;
-	console.log(obj);
+	//const obj = intersects[0].object;
+	//console.log(obj);
+
+	// intersects の中をすべて調べて Mesh が含まれていたら Log に出力
+	for (const intersect of intersects) {
+		const obj = intersect.object;
+		if (obj instanceof THREE.Mesh) {
+			console.log(`Mesh ${obj.name} clicked`);
+		}
+	}
 }
