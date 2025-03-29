@@ -82,9 +82,16 @@ function onWindowResize() {
 // クリック時の処理
 function onClick(event: MouseEvent) : void {
 	// クリックした位置の座標を取得する
-	const x = ( event.clientX / window.innerWidth ) * 2 - 1
-	const y = - ( event.clientY / window.innerHeight ) * 2 + 1
-	console.log(`click at ( ${x}, ${y} )`)
+	const element = event.target as HTMLElement
+	if (!element) {
+		console.error(`element is not HTMLElement ${element}`)
+		return
+	}
+	const x = ( (event.clientX - element.offsetLeft) / element.offsetWidth ) * 2 - 1
+	const y = - ( (event.clientY - element.offsetTop) / element.offsetHeight ) * 2 + 1
+	console.log(`click at ( ${x}, ${y} ) element ${element.offsetLeft}, ${element.offsetTop} ${Object.keys(element)}`)
+	console.log(event.target)
+	console.log(event)
 
 	// raycast を飛ばしてクリックしたオブジェクトを取得する
 	const raycaster = new THREE.Raycaster();
