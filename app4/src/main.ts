@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { TransformControls } from 'three/addons/controls/TransformControls.js';
 
 import { Menu } from './utils/menu.ts';
 import { SceneManager } from './sys/scene_manager.ts'
@@ -24,6 +25,11 @@ contents.appendChild( renderer.domElement );
 
 const orbit = new OrbitControls( sm.getCamera(), renderer.domElement );
 orbit.update();
+
+const transform_controls = new TransformControls(sm.getCamera(), renderer.domElement);
+transform_controls.update(0.0)
+const transform_helper = transform_controls.getHelper()
+sm.getScene().add( transform_helper )
 
 // グリッドを表示
 const size = 10;
@@ -69,7 +75,8 @@ function createMenu() {
 function animate() {
 	const dt = clock.getDelta()
 	sm.update(dt)
-	orbit.update()
+	orbit.update(dt)
+	transform_controls.update(dt)
 	renderer.render( sm.getScene(), sm.getCamera() );
 }
 
@@ -125,8 +132,12 @@ function onClick(event: MouseEvent) : void {
 	// 取得したオブジェクトの中から マニピュレーター (SphereMesh) を取得する
 	const mesh = getIntersectSphereMesh(intersects)
 	if(mesh == null){
-		console.log("Mesh is null")
-		return
+		//console.log("Mesh is null")
+		// 頂点以外をクリックした時は何もしない
+	} else {
+		//console.log(`Mesh ${mesh.name} clicked`);
+		// 頂点をクリックした時は TransformControls を表示する
+		// https://threejs.org/docs/?q=Control#examples/en/controls/TransformControls
+		transform_controls.attach(mesh);
 	}
-	console.log(`Mesh ${mesh.name} clicked`);
 }
